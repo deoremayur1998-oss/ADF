@@ -1,0 +1,153 @@
+{
+	"name": "Mypipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get list from rawlayer",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_Input_Dataset",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Filter files from rawalayer",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Get list from rawlayer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get list from rawlayer').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@endswith(item().name,'.json')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "For loop on rawlayer",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Filter files from rawalayer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Filter files from rawalayer').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy json files",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"wildcardFolderPath": "input",
+										"wildcardFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_Input_Dataset",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_silver_output",
+									"type": "DatasetReference",
+									"parameters": {
+										"Filename": {
+											"value": "@concat(replace(item().name,'.json',' '),'_',formatDateTime(utcNow(),'dd_MM_yyyy'),'.json')",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-02-27T10:22:47Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

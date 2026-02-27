@@ -1,0 +1,24 @@
+{
+	"name": "storagecveenttrigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/rawlayer/blobs/input",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/6912045f-ad28-4dc6-b63b-756d8049d51c/resourceGroups/myresourcecomm/providers/Microsoft.Storage/storageAccounts/mybulksorageacc1",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

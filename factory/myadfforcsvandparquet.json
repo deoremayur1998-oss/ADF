@@ -1,0 +1,9 @@
+{
+	"name": "myadfforcsvandparquet",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dc8ab6db-dd7b-46ba-9f95-8eaac1f4f5e2",
+		"tenantId": "53830187-1a2b-405a-af4a-94e400498e28"
+	}
+}

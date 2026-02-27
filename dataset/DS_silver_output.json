@@ -1,0 +1,33 @@
+{
+	"name": "DS_silver_output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_output_silver_parquet",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Filename": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().Filename",
+					"type": "Expression"
+				},
+				"folderPath": "output",
+				"fileSystem": "silver"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,36 @@
+{
+	"name": "DS_SqlServerTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "country_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "country_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "continent",
+				"type": "nvarchar"
+			},
+			{
+				"name": "population",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Countries"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
