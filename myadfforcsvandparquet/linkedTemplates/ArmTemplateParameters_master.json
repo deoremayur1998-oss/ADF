@@ -1,0 +1,120 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "myadfforcsvandparquet"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage3_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage4_accountKey": {
+			"value": ""
+		},
+		"DS_EXCEL_TO_PARQUET_SOURCE_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_CSV_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_PRQT_accountKey": {
+			"value": ""
+		},
+		"LS_CSV_NEW_DELETE_accountKey": {
+			"value": ""
+		},
+		"LS_DELETE_accountKey": {
+			"value": ""
+		},
+		"LS_INPUT_CSV_accountKey": {
+			"value": ""
+		},
+		"LS_NEW_accountKey": {
+			"value": ""
+		},
+		"LS_SqlServer_password": {
+			"value": ""
+		},
+		"LS_output_silver_parquet_accountKey": {
+			"value": ""
+		},
+		"Ls_Input_Dataset_accountKey": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://mystorageparquet1.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage3_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage4_properties_typeProperties_url": {
+			"value": "https://mystorageparquet1.dfs.core.windows.net/"
+		},
+		"DS_EXCEL_TO_PARQUET_SOURCE_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"LS_ADLS_CSV_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"LS_ADLS_PRQT_properties_typeProperties_url": {
+			"value": "https://mystorageparquet1.dfs.core.windows.net/"
+		},
+		"LS_CSV_NEW_DELETE_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"LS_DELETE_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"LS_INPUT_CSV_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"LS_NEW_properties_typeProperties_url": {
+			"value": "https://mystorageparquet1.dfs.core.windows.net/"
+		},
+		"LS_SqlServer_properties_typeProperties_server": {
+			"value": "DESKTOP-HFDDKVD\\SQLEXPRESS"
+		},
+		"LS_SqlServer_properties_typeProperties_database": {
+			"value": "MAYURDB"
+		},
+		"LS_SqlServer_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"LS_output_silver_parquet_properties_typeProperties_url": {
+			"value": "https://mystorageparquet1.dfs.core.windows.net/"
+		},
+		"Ls_Input_Dataset_properties_typeProperties_url": {
+			"value": "https://mybulksorageacc1.dfs.core.windows.net/"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "DESKTOP-HFDDKVD\\SQLEXPRESS"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "MAYURDB"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"storagecveenttrigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/6912045f-ad28-4dc6-b63b-756d8049d51c/resourceGroups/myresourcecomm/providers/Microsoft.Storage/storageAccounts/mybulksorageacc1"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
