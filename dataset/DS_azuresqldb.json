@@ -1,0 +1,18 @@
+{
+	"name": "DS_azuresqldb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZURESQL_JD",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"Triggername": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

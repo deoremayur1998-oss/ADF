@@ -1,0 +1,41 @@
+{
+	"name": "DS_SQLSERVER_ONPRIEM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQLSERVER_ONPRIEM",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableSchema": {
+				"type": "string"
+			},
+			"TableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "CategoryKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CategoryName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().TableSchema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
